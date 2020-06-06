@@ -1,0 +1,74 @@
+Solidity is widely used by programmers and developers to code within dApp deployment and for ICO launches. Here’s how the example code looks:
+contract BasicIterator
+
+{
+
+address creator; // reserve one "address"-type spot
+
+uint8[10] integers; // reserve a chunk of storage for 10 8-bit unsigned integers in an array
+
+function BasicIterator()
+
+{
+
+creator = msg.sender;
+
+uint8 x = 0;
+
+//Section 1: Assigning values
+
+while(x < integers.length) {
+
+integers[x] = x;
+
+x++;
+
+} }
+
+function getSum() constant returns (uint) {
+
+uint8 sum = 0;
+
+uint8 x = 0;
+
+//Section 2: Adding the integers in an array.
+
+while(x < integers.length) {
+sum = sum + integers[x];
+
+x++;
+}
+
+return sum;
+
+}
+
+// Section 3: Killing the contract
+
+function kill()
+
+{
+
+if (msg.sender == creator)
+
+{
+
+suicide(creator);
+
+}
+
+}
+
+}
+Now let’s take a closer look at development stages:
+1. First of all, assign the values: fill up the integers array with a “while loop”:
+while(x < integers.length) {
+
+integers[x] = x;
+
+x++;
+
+}
+The x integer holds the value of 0. Furthermore, the while loop starts from 0 and represents the integer length capacity. If it goes up to 9, you’ll get the following value: 0,1,2,3,4,5,6,7,8,9.
+2. Add the contents of an array using the while loop and a “sum” variable.
+3. Finally, call “Kill the Contract” function to return remained funds to the contract creator.
